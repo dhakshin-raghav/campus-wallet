@@ -1,0 +1,53 @@
+version: '3.8'
+
+services:
+  # 1. PostgreSQL Database
+  db:
+    image: postgres:15
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: wallet
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  # 2. Node.js Express Backend
+  backend:
+    image: 034363017905.dkr.ecr.us-east-1.amazonaws.com/cafeteria-backend:latest
+    restart: always
+    ports:
+      - "8000:8000"
+    environment:
+      - NODE_ENV=production
+      # Add necessary environment variables here
+
+      # 3. Next.js Merchant App
+  merchant:
+    image: 034363017905.dkr.ecr.us-east-1.amazonaws.com/cafeteria-merchant:latest
+    restart: always
+    ports:
+      - "3001:3000" # Mapping differently so it doesn't collide
+    environment:
+      - NODE_ENV=production
+      # Next.js URLs, e.g. for API calls
+      - NEXT_PUBLIC_API_URL=http://<YOUR_EC2_IP>:8000
+
+  # 4. Next.js Customer App
+  customer:
+    image: 034363017905.dkr.ecr.us-east-1.amazonaws.com/cafeteria-customer:latest
+    restart: always
+    depends_on:
+      - db
+      - backend
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/wallet
+      - NEXT_PUBLIC_API_URL=http://<YOUR_EC2_IP>:8000
+
+volumes:
+  postgres_data:

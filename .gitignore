@@ -1,0 +1,6 @@
+node_modules/
+.env
+debug_key
+debug_key.pub
+.next/
+*.log

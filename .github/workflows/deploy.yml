@@ -1,0 +1,66 @@
+name: Deploy to EC2
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  AWS_REGION: us-east-1
+  ECR_REGISTRY: 034363017905.dkr.ecr.us-east-1.amazonaws.com
+  EC2_HOST: 44.213.82.44
+  EC2_USER: ec2-user
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v2
+
+      - name: Build and Push Backend
+        run: |
+          cd backend
+          docker build -t cafeteria-backend:latest .
+          docker tag cafeteria-backend:latest ${{ env.ECR_REGISTRY }}/cafeteria-backend:latest
+          docker push ${{ env.ECR_REGISTRY }}/cafeteria-backend:latest
+
+      - name: Build and Push Customer Frontend
+        run: |
+          cd customer
+          docker build --build-arg NEXT_PUBLIC_API_URL=http://${{ env.EC2_HOST }}:8000 -t cafeteria-customer:latest .
+          docker tag cafeteria-customer:latest ${{ env.ECR_REGISTRY }}/cafeteria-customer:latest
+          docker push ${{ env.ECR_REGISTRY }}/cafeteria-customer:latest
+
+      - name: Build and Push Merchant Frontend
+        run: |
+          cd merchant
+          docker build --build-arg NEXT_PUBLIC_API_URL=http://${{ env.EC2_HOST }}:8000 -t cafeteria-merchant:latest .
+          docker tag cafeteria-merchant:latest ${{ env.ECR_REGISTRY }}/cafeteria-merchant:latest
+          docker push ${{ env.ECR_REGISTRY }}/cafeteria-merchant:latest
+
+      - name: Deploy to EC2
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ env.EC2_HOST }}
+          username: ${{ env.EC2_USER }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            echo "Pulling new images on EC2..."
+            sudo docker-compose pull
+            echo "Restarting containers..."
+            sudo docker-compose up -d
+            echo "Checking status..."
+            sudo docker-compose ps
