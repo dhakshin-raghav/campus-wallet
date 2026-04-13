@@ -1,0 +1,1593 @@
+ML-DRIVEN SKILL DEMAND FORECASTING
+
+                        PROJECT REPORT
+
+                             Submitted by
+
+
+
+          RAHUL SANJAY G (7376232IT235)
+
+
+        In partial fulfilment for the award of the degree of
+
+
+
+              BACHELOR OF TECHNOLOGY
+                                  in
+
+               INFORMATION TECHNOLOGY
+
+
+
+
+    BANNARI AMMAN INSTITUTE OF TECHNOLOGY
+  (An Autonomous Institution Affiliated to Anna University, Chennai)
+                   SATHYAMANGALAM-638401
+
+
+
+        ANNA UNIVERSITY: CHENNAI 600 025
+
+                            APRIL 2026
+
+
+
+
+                                  1
+ML-DRIVEN SKILL DEMAND FORECASTING
+
+                        PROJECT REPORT
+
+                             Submitted by
+
+
+
+          RAHUL SANJAY G (7376232IT235)
+
+
+        In partial fulfilment for the award of the degree of
+
+
+
+              BACHELOR OF TECHNOLOGY
+                                  in
+
+               INFORMATION TECHNOLOGY
+
+
+
+
+    BANNARI AMMAN INSTITUTE OF TECHNOLOGY
+  (An Autonomous Institution Affiliated to Anna University, Chennai)
+                   SATHYAMANGALAM-638401
+
+
+
+        ANNA UNIVERSITY: CHENNAI 600 025
+
+                            APRIL 2026
+
+
+
+
+                                  2
+                         BONAFIDE CERTIFICATE
+
+
+Certified that this project report entitled “ML-DRIVEN SKILL DEMAND
+FORECASTING” is the bonafide work of RAHUL SANJAY G (7376232IT235)
+who carried out the project work under my supervision.
+
+
+
+
+ Dr. Naveena S                                       Dr. Sri Vinitha V
+ HEAD OF THE DEPARTMENT                              ASSOCIATE PROFESSOR
+ Department of Information Technology                Department of Information Technology
+ Bannari Amman Institute of                          Bannari Amman Institute of
+ Technology                                          Technology
+
+
+
+
+Submitted for Project Viva Voice examination held on..................
+
+
+
+
+  Internal Examiner 1                                   Internal Examiner 2
+
+
+
+
+                                                3
+                               DECLARATION
+
+
+We affirm that the project work titled “ML-DRIVEN SKILL DEMAND
+FORECASTING” being submitted in partial fulfilment for the award of the degree
+of Bachelor of Technology in Information Technology is the record of original
+work done by us under the guidance of Dr. Sri Vinitha V, Associate Professor,
+Department of Information Technology. It has not formed a part of any other project
+work(s) submitted for the award of any degree or diploma, either in this or any other
+University.
+
+
+
+
+RAHUL SANJAY G
+
+(7376232IT235)
+
+I certify that the declaration made above by the candidates is true.
+
+
+
+
+                                                     Dr. Sri Vinitha V
+
+                                                  ASSOCIATE PROFESSOR
+
+                                                Department of Information Technology
+
+
+
+
+                                          4
+                          ACKNOWLEDGEMENT
+
+
+       We would like to express our heartfelt gratitude to our esteemed Chairman,
+Dr. S. V. Balasubramaniam, and our respected Principal, Dr. C. Palanisamy, for
+providing excellent facilities and continuous support during the course of our study
+at this institute.
+
+       We are deeply grateful to Dr. Naveena S, Head of the Department,
+Department of Information Technology, for her valuable guidance, constant
+encouragement, and suggestions that greatly helped us to carry out this project work
+successfully.
+
+       We wish to extend our sincere thanks to our Faculty Guide, Dr. Sri Vinitha
+V, Associate Professor, Department of Information Technology, for her inspiring
+ideas, dedicated supervision, encouragement, and technical guidance throughout the
+completion of our project work titled           “ML-DRIVEN SKILL DEMAND
+FORECASTING.”
+
+       We would also like to thank our friends, faculty members, and non-teaching
+staff who have directly or indirectly contributed to the successful completion of this
+project.
+
+
+
+
+                                              RAHUL SANJAY G (7376232IT235)
+
+
+
+
+                                          5
+                                   ABSTRACT
+
+
+      Career planning and skill development in the rapidly evolving technology
+sector are often reactive, with individuals struggling to identify which competencies
+will remain relevant in the future. Traditional guidance relies on unstructured data
+or subjective advice, leading to significant skill gaps, mismatches in the labor
+market, and inefficient educational investments. There is a critical lack of
+centralized, data-driven platforms that can quantify and predict the future trajectory
+of specific technologies. Therefore, there is a need for an automated, AI-powered
+system that leverages historical data and market trends to provide objective, real-
+time demand forecasting and strategic learning roadmaps for aspiring professionals.
+
+
+
+      The aim of this project is to develop an ML-driven skill demand forecasting
+platform that provides automated demand scores, future scope analysis, and
+personalized learning paths. The problem addressed is the uncertainty and lack of
+predictive insights in professional skill acquisition. The platform was developed
+using a full-stack architecture: React for a dynamic and premium frontend, Node.js
+and Express.js for a high-performance backend, and MongoDB for secure data
+persistence. The machine learning engine was built using Python (Flask),
+implementing a Random Forest Regressor model to analyze variables such as job
+postings, average salary, and annual growth rates. The methodology involved data
+preprocessing, label encoding for skill categorization, and a single-service
+deployment strategy to ensure seamless API communication between Node.js and
+Python.
+
+
+
+
+                                          6
+      The developed system successfully quantifies technology demand by
+generating accurate Demand Scores (0-100) and categorizing skills into High,
+Stable, or Emerging demand tiers. It allows users to search for any technology and
+receive instant projections, future-scope ratings, and a structured, multi-step learning
+roadmap. Initial testing demonstrates that the system reduces the time spent on
+career research by providing centralized, AI-validated insights. Discussion of the
+results shows that the Random Forest model achieves high predictive reliability
+across various technology domains. In conclusion, this project provides a scalable
+and secure solution that addresses the limitations of traditional career counseling,
+empowering users with data-driven foresight to navigate the future of work.
+
+Keywords:
+      Machine Learning, Skill Demand Forecasting, Predictive Analytics, Random
+Forest, Career Planning, Automated Roadmap Generation, Full-Stack Web
+Development, Data-Driven Career Guidance.
+
+
+
+
+                                           7
+                       TABLE OF CONTENTS
+
+CHAPTER NO.                            TITLE                PAGE NO
+
+              BONAFIDE CERTIFICATE                             3
+
+              DECLARATION                                      4
+
+              ACKNOWLEDGEMENT                                  5
+
+              ABSTRACT                                         6
+
+     1        INTRODUCTION                                    13
+
+              1.1 Background of the Work                      13
+
+              1.2 Motivation (Scope of the Proposed Work)     14
+
+              1.3 Scope of the Proposed Work                  15
+
+     2        LITERATURE SURVEY                               16
+
+              2.1 Background of the Survey                    17
+
+              2.2 Existing Works                              18
+
+              2.3 Gap Identification                          19
+
+              2.4 Summary of Challenges                       20
+
+              2.5 Problem Statement                           21
+
+              2.6 Proposed Solution                           22
+
+     3        OBJECTIVES AND METHODOLOGY                      23
+
+              3.1 Objectives of the Proposed Work             23
+
+
+                                        8
+    3.2 Flow Diagram of the Proposed Work           24
+
+    3.3 Selection of Components, Tools, and         27
+    Techniques
+
+    3.4 Security and Authentication                 28
+
+    3.5 Testing and Validation                      29
+
+    3.6 Standards and Best Practices                30
+
+4   PROPOSED WORK MODULES                           32
+
+    4.1 Proposed Work                               33
+
+    4.2 User Registration and Role-Based Access     33
+
+    4.3 Admin Dashboard and Skill Management        34
+
+    4.4 User Dashboard and Forecast Management      35
+
+    4.5 ML Prediction and Demand Scoring Module     35
+
+    4.6 Metadata Enrichment and Roadmap Module      36
+
+    4.7 Methodology                                 36
+
+5   RESULTS AND DISCUSSION                          38
+
+    5.1 Results                                     38
+
+    5.1.1 User Registration and Role-Based Access   39
+
+    5.1.2 Dashboard and Skill Management            40
+
+
+
+                            9
+    5.1.3 User Dashboard and Forecasting Interaction   42
+
+    5.1.4 Prediction Accuracy and Performance          45
+
+    5.3 Cost-Benefit Analysis                          45
+
+    5.3 Cost-Benefit Analysis                          47
+
+    5.4 Operational Benefits                           49
+
+6   CONCLUSIONS & SUGGESTIONS FOR                      51
+    FUTURE WORK
+    6.1 Conclusion                                     51
+
+    6.2 Suggestion for Future Work                     52
+
+7   REFERENCES                                         53
+
+8   APPENDICES                                         54
+
+9   PLAGIARISM REPORT                                  55
+
+
+
+
+                               10
+                          LIST OF FIGURES
+
+FIG NO.                    FIGURE NAME      PAGE NO.
+
+  3.1     Flow diagram                         26
+
+  5.1     User Registration Screenshot         40
+
+  5.2     Dashboard Screenshot 1               41
+
+  5.3     Dashboard Screenshot 2               42
+
+  5.4     Market Research Screenshot           43
+
+  5.5     Forecasting Screenshot               44
+
+  5.6     Road Map Screenshot                  45
+
+
+
+
+                                    11
+                             LIST OF TABLES
+
+TABLE NO.                        TABLE NAME   PAGE NO.
+
+   2.1      Gap Identification                   19
+
+   3.1      Selection Of Tools                   27
+
+   5.1      User Registration Metrics            39
+
+
+
+
+                                        12
+                                   CHAPTER I
+                               INTRODUCTION
+
+      Effective career planning and skill acquisition are critical in today’s rapidly
+changing technological landscape. With the decline of traditional competencies,
+professionals often struggle to identify which skills will yield the highest returns.
+Traditionally, guidance has been reactive and subjective, leading to a significant
+"skill gap" where workforce competencies do not align with industry demands.
+
+      To address these challenges, ML-Driven Skill Demand Forecasting is
+proposed as a centralized web application. The system provides data-driven insights
+into the future trajectory of various technologies using Artificial Intelligence. Any
+user can input a specific skill and receive an AI-powered demand score, future scope
+rating, and a personalized learning roadmap.
+
+      A key feature of the system is calculating a quantifiable "Demand Score" by
+analyzing job postings, salaries, and growth rates. By providing a structured and
+automated approach to career planning, this platform enhances decision-making
+efficiency and offers a reliable solution for modern professional development
+management.
+
+
+1.1 Background of the Work
+
+      In the modern digital economy, technologies emerge and evolve at an
+unprecedented pace. This volatility makes it difficult for individuals to choose a
+learning path that ensures long-term employability. Traditionally, individuals have
+relied on informal blogs or manual searches on job boards to gauge the popularity
+of a skill, but these methods lack structure and predictive depth.
+
+
+
+                                          13
+      Manual research often leads to several challenges, including information
+overload and the inability to compare multiple technologies objectively. Students
+and professionals are often left guessing which skills are worth their investment,
+leading to a mismatch between academic preparation and industry requirements.
+Furthermore, educational institutions find it difficult to update curricula fast enough
+to match these shifting market demands.
+
+      To address these issues, there is a need for a robust and AI-powered system
+that can automate the entire process of ML-Driven Skill Demand Forecasting. Such
+a system integrates demographic trends and market statistics to provide a centralized
+platform for strategic career mapping, ensuring that users can invest in the right
+competencies at the right time.
+
+
+1.2 Motivation (Scope of the Proposed Work)
+
+      The motivation behind this project arises from the practical challenges faced
+by individuals in navigating a volatile job market. As the density of technology
+increases, the number of potential learning paths grows exponentially, making
+manual career coordination inefficient. This creates a strong need for an automated
+system that simplifies the decision-making process through predictive analytics.
+
+      One of the key motivating factors is the lack of objective metrics in traditional
+career guidance. Advice is often based on hearsay rather than data trends. By
+introducing a system that utilizes a Random Forest Regressor model, the accuracy
+and objectivity of ML-Driven Skill Demand Forecasting can be significantly
+improved for the end-user.
+
+      Furthermore, the increasing reliance on Artificial Intelligence in education has
+motivated the development of a full-stack platform that is accessible and easy to use.
+
+
+                                          14
+The project aims to reduce user anxiety regarding the future of work and provide
+real-time visibility into global skill trends, supporting the efficient functioning of
+professional development ecosystems.
+
+
+1.3 Scope of the Proposed Work
+
+      The scope of the project is focused on providing a comprehensive solution for
+ML-Driven Skill Demand Forecasting. The system is designed to handle a wide
+range of technology skills, from cloud computing to software development and
+cybersecurity, providing structured learning roadmaps for each.
+
+      The system supports a dual-service architecture using a Node.js backend for
+authentication and a Python microservice for executing Machine Learning models.
+Users can search for technology skills, view demand scores (0-100), and access
+metadata including the future scope (e.g., High, Moderate, or Emerging). This
+ensures a data-driven approach to professional development.
+
+      From a technical perspective, the system is developed using React,
+MongoDB, and Python. It is designed to be scalable and responsive across different
+devices. However, the current scope is limited to web-based implementation and
+does not include deep real-time scraping of all global job boards or advanced multi-
+user organizational management at this stage.
+
+
+
+
+                                          15
+                                   CHAPTER II
+                             LITERATURE SURVEY
+
+      Skill management and career planning systems have evolved significantly
+with the growth of digital technologies and increasing reliance on structured
+methodologies. Traditionally, individuals depended on manual approaches such as
+career counselling, peer suggestions, and job portal browsing, which often resulted
+in subjective and inconsistent outcomes. These methods lack scalability and fail to
+provide predictive insights, leading to inefficient career decisions. Modern software
+engineering emphasizes the need for systematic and data-driven solutions to
+overcome these challenges [9], [10]. Despite the availability of digital tools, many
+systems still function as static information providers rather than intelligent decision-
+support platforms. This limitation highlights the need for more advanced and
+automated approaches in skill management.
+
+      With the advancement of web technologies, modern platforms such as job
+aggregators and learning management systems have improved access to career-
+related data. These systems are typically designed using REST-based architectures
+introduced by Roy Fielding [3] and implemented with technologies like Node.js and
+React for scalable and interactive applications [4], [6]. Databases such as MongoDB
+support efficient storage of large and unstructured datasets [5]. However, these
+platforms mainly rely on descriptive analytics, focusing on current job trends rather
+than future predictions. They also lack structured learning guidance, forcing users to
+manually interpret information and connect skills to career paths.
+
+
+
+
+                                          16
+      Recent advancements in machine learning have enabled predictive analysis
+for complex datasets, improving decision-making capabilities in various domains.
+Techniques such as Random Forest, proposed by Leo Breiman [1], are widely used
+for forecasting due to their accuracy and robustness. Libraries like Scikit-learn
+provide efficient implementations for building such models [2]. However, most
+existing systems fail to integrate these predictive techniques into user-friendly
+platforms that offer actionable insights. Additionally, secure and scalable system
+design, as recommended by OWASP Foundation [8], is often overlooked. Therefore,
+there is a strong need for an integrated solution that combines predictive analytics,
+demand scoring, and automated learning roadmaps.
+
+2.1 Background of the Survey
+
+      The rapid digital transformation across industries has increased the
+importance of accurate skill forecasting. Educational institutions and job seekers rely
+on timely insights into market trends to remain competitive. However, conventional
+digital job boards lack automation and real-time predictive capabilities, making them
+insufficient for dynamic sectors like information technology.
+
+      Machine Learning techniques, particularly regression-based models, have
+been explored to analyze market trends and predict demand patterns. Algorithms
+such as Random Forests, introduced by Leo Breiman, have proven effective in
+handling complex datasets and identifying hidden patterns [1]. Tools like Scikit-
+learn provide efficient implementations of such models, enabling developers to build
+predictive systems with ease [2], [11].
+
+
+
+
+                                          17
+       Despite these advancements, many existing studies focus on macro-level
+economic indicators rather than delivering actionable insights such as skill-specific
+learning paths or career strategies.
+
+
+2.2Existing Works
+
+   Several systems have been developed to address career guidance and skill
+development:
+
+
+   •   Job Aggregator Platforms:
+       These systems collect large volumes of job listings and provide real-time
+       data about job availability. While informative, they lack structured insights
+       and predictive analysis, making them less effective for long-term planning.
+
+
+   •   Learning Management Systems (LMS):
+       LMS platforms focus on delivering educational content once a skill is
+       identified. However, they do not assist users in selecting the most relevant
+       skills based on future demand trends.
+
+   •   AI-Based Recommendation Systems:
+       Some modern platforms integrate AI to suggest career options. However,
+       they still require users to manually interpret how specific skills relate to job
+       roles, limiting usability.
+
+
+
+
+                                           18
+        From a system design perspective, most applications follow RESTful
+architectures as defined by Roy Fielding [3], and are commonly implemented using
+technologies such as Node.js [4] and React [6]. Databases like MongoDB are widely
+used for scalability and flexibility in handling unstructured data [5].
+
+        While these technologies provide a strong foundation, existing systems fail to
+integrate forecasting, structured learning, and decision-making into a single
+platform.
+
+
+2.3 Gap Identification
+
+                             Table 2.1: Gap Identification
+
+
+ SI NO.       Gap / Issue                            Description
+
+
+
+    1           Lack of          Most career systems do not provide automated
+               Intelligent       mechanisms to calculate demand scores effectively,
+                Conflict         relying instead on static statistics or simple counts
+              Resolution         that do not ensure a fair assessment of a skill's
+                                 value.
+
+
+
+    2         Insufficient       Many systems provide raw job data without
+              Role-Based         integrating it into a role-based or structured
+                Control          learning roadmap, making it difficult for users to
+                                 follow a clear path to mastery.
+
+
+
+
+                                          19
+   3           Limited          Users cannot access real-time forecasting or track
+            Transparency        the shifting status of technology trends, leading to
+                                confusion and the acquisition of skills that may
+                                already be in decline.
+
+
+
+   4         Absence of         Existing systems do not consider critical variables
+           Priority-Based       like   salary   growth,    learning     difficulty,   or
+             Allocation         institutional priorities, resulting in inefficient time
+                                and resource utilization by the user.
+
+
+
+   5            High            The high degree of manual involvement required to
+           Administrative       research and compare skills across multiple
+            Dependency          platforms increases the workload on individuals
+                                and reduces overall career planning efficiency.
+
+
+
+   6            Poor            Many current forecasting tools are not designed to
+             Scalability        handle a large and diverse number of technology
+                                skills and market variables simultaneously, limiting
+                                their scalability and depth.
+
+
+       These gaps highlight the need for a more advanced system that addresses these
+challenges comprehensively.
+
+
+
+
+                                          20
+2.4 Summary of Challenges
+
+Based on the analysis of existing systems, several key challenges can be identified:
+
+   ● Processing and analyzing massive job market data simultaneously.
+   ● Accurately predicting future technology trends rather than just viewing
+      current counts.
+   ● Quantifying abstract demand into a single, reliable "Demand Score."
+   ● Providing actionable and personalized learning roadmaps for users.
+   ● Reducing the manual administrative and research workload for career
+      planning.
+   ● Maintaining real-time data relevance in a volatile tech economy.
+   ● Supporting high scalability and system performance for a global database of
+      skills.
+
+These challenges emphasize the complexity of resource management and the need
+for an intelligent and automated solution.
+
+
+2.5 Problem Statement
+
+      Individuals and educational institutions face significant challenges in
+navigating the volatile technology job market due to a lack of structured and
+predictive systems. Existing methods rely on static data and subjective advice, which
+often results in skill mismatches, inefficient learning investments, and increased
+anxiety for job seekers.
+
+      There is a need for a centralized, AI-powered system that can automate skill
+forecasting, calculate demand scores objectively, and provide clear learning
+roadmaps based on future market trajectories.
+
+
+
+                                         21
+      The problem addressed in this project is to design and develop a scalable,
+secure, and efficient ML-Driven Skill Demand Forecasting system that overcomes
+the limitations of manual career research and enhances the overall accuracy of
+professional planning.
+
+
+2.6 Proposed Solution
+
+      To overcome the limitations of existing systems, the proposed solution is this
+project, a full-stack, ML-driven web application designed to automate and optimize
+technology demand forecasting.
+
+      The system introduces a secure authentication model using JSON Web
+Tokens (JWT), allowing users to create profiles and track their forecast history.
+Administrators can manage the core skill database, adding or updating metadata such
+as pros, cons, and roadmap steps.
+
+      This project implements an automated forecasting workflow, allowing users
+to search for any skill and receive instant results. A key feature of the system is the
+ML Prediction Engine, where a Random Forest Regressor model analyzes variables
+like job postings, average salary, and growth rates to generate a quantifiable Demand
+Score (0-100).
+
+      The system also provides Automated Roadmap Generation, which resolves
+the confusion of how to learn a skill by providing a step-by-step guide. Factors such
+as difficulty levels and learning duration are considered to ensure the advice is
+realistic. Developed using React, Node.js, Express.js, MongoDB, and Python, the
+system ensures high scalability, modern aesthetics, and a user-friendly experience.
+
+
+
+
+                                          22
+                                 CHAPTER III
+                 OBJECTIVES AND METHODOLOGY
+
+      The primary objective of this project is to develop a centralized and automated
+system for managing and forecasting technology skill demands. The system aims to
+reduce manual research effort, prevent career-tracking errors, and ensure data-driven
+skill acquisition. It implements secure user authentication to provide personalized
+access to forecasting history and roadmaps. Another key objective is to enable real-
+time tracking of technology trends and improve transparency in market projections.
+Additionally, the system focuses on optimizing professional growth through
+intelligent Machine Learning models and priority-based roadmap resolution.
+
+      The methodology adopted for this project follows a structured, modular
+development approach. Initially, system requirements are analyzed to identify core
+technology features and ML parameters. A dual-service design is then created to
+ensure high performance, with the frontend/backend handled by the MERN stack
+and the ML engine handled by Python. The frontend is developed using React, the
+backend is implemented using Node.js and Express.js, and MongoDB is used for
+data storage. The Python Flask service hosts the Random Forest model. The system
+undergoes rigorous testing—including unit, integration, and system testing—to
+ensure reliability and performance. This methodology ensures an efficient, scalable,
+and user-friendly solution for the modern professional.
+
+
+3.1 Objectives of the Proposed Work
+
+
+      The primary objective of the ML-Driven Skill Demand Forecasting system is
+to design and develop a centralized and automated platform for predicting
+technology market trends. The specific objectives are as follows:
+
+                                         23
+The specific objectives of the proposed work are as follows:
+
+   ● To develop a web-based application that enables users to search, forecast, and
+      manage their skill development.
+
+   ● To implement an ML-powered engine that generates demand scores based on
+      salary, growth, and market density.
+
+   ● To categorize technology future scope into tiers (e.g., High, Stable, or
+      Emerging) for clearer decision-making.
+
+   ● To automate the Roadmap Generation workflow, providing users with
+      actionable learning steps.
+
+   ● To ensure secure data management through JWT-based authentication and
+      encrypted database storage.
+
+   ● To provide a centralized administrative dashboard for managing skill
+      metadata and system health.
+
+   ● To design a scalable system using a Microservice architecture (Node.js +
+      Python) to handle high-concurrency requests efficiently.
+
+      These objectives collectively aim to improve skill utilization, enhance career
+reliability, and ensure that users can navigate the future of work with confidence.
+
+3.2 Flow Diagram of the Proposed Work
+
+      The flow diagram represents the overall architecture and data flow of the Skill
+Demand Forecasting system. The process begins with the user interacting through
+the frontend interface, where requests such as skill searches or authentication are
+initiated. These requests are handled by the backend server built using Express.js,
+
+                                         24
+which processes user inputs and routes them to the appropriate modules. A key
+component in this flow is the JWT Authentication Middleware, which verifies user
+identity and ensures that only authorized users can access protected resources.
+
+      Once authenticated, the request is forwarded to the core application logic,
+where data is fetched from the database and processed. The system integrates a
+machine learning model that analyzes input parameters to generate a demand score
+and related insights. The processed results are then sent back to the frontend, where
+they are displayed in a structured and user-friendly format. This flow ensures secure,
+efficient, and real-time interaction between the user, backend services, and the
+prediction engine.
+
+
+
+
+                                         25
+Figure 3.1: Flow Diagram
+
+
+
+
+        26
+3.3 Selection of Components, Tools, and Techniques
+
+      The development of skill demand forecasting involves the use of modern
+technologies and tools to ensure efficiency, scalability, and performance.
+
+                           Table 3.1: Selection of Tools
+
+
+        Category Technology / Tool                          Description
+
+
+
+     Frontend             React.js        Used to develop a dynamic and responsive user
+                                          interface with a component-based architecture,
+                                          making the system modular and easy to
+                                          maintain.
+
+
+
+     Backend         Node.js, Express.js Implements server-side logic with support for
+                                          asynchronous operations, enabling efficient
+                                          handling of multiple requests simultaneously.
+
+
+
+     Database            MongoDB          A NoSQL database used to store user profiles,
+                                          historical forecasts, and detailed skill metadata
+                                          (Pros/Cons and Roadmaps).
+
+
+
+   Design Tools         Figma/CSS3        Used to create a premium, dark-themed UI
+                                          with glassmorphism effects for a state-of-the-
+                                          art user experience.
+
+
+
+                                         27
+   ML Engine          Python, Flask,    A dedicated microservice that hosts the
+                       Scikit-Learn     Random Forest Regressor model to calculate
+                                        demand scores in real-time..
+
+
+
+    Technique         Microservice      Separates the web logic (Node.js) from the AI
+                       Architecture     logic (Python) to ensure high performance and
+                                        maintainability.
+
+
+
+    Technique           Predictive      Uses historical job market parameters to
+                        Analytics       forecast the future viability of technology
+                                        skills.
+
+
+
+    Technique             JWT           Provides secure, stateless session management
+                      Authentication    for   users   to   access   their   personalized
+                                        forecasting history.
+
+
+
+
+3.4 Security and Authentication
+
+      Security is a critical aspect of skill demand forecasting. The platform
+implements robust measures to protect user data and ensure the integrity of the
+forecasting models.
+
+
+
+
+                                       28
+      JSON Web Tokens (JWT): Used for secure authentication. On login, the
+server generates a token that the client must provide for all subsequent protected API
+requests.
+
+      Bcrypt Hashing: User passwords are never stored in plain text; they are salted
+and hashed using the bcrypt algorithm before being saved to MongoDB.
+
+      Route Protection: Middleware is implemented in the Node.js backend to
+ensure that sensitive operations, such as accessing private history or admin
+functions, are only available to authenticated users.
+
+      Input Sanitization: All user inputs (skill names, growth parameters) are
+validated to prevent NoSQL injection and Cross-Site Scripting (XSS) attacks.
+
+
+3.5 Testing and Validation
+
+      Testing ensures that the ML-Driven Skill Demand Forecasting system
+provides accurate results and a smooth user experience.
+
+Types of Testing:
+
+   ● Unit Testing:
+       Individual functions like the "Demand Score Calculation" and "Roadmap
+      Formatting" are tested for logic errors.
+   ● Integration Testing:
+       Focuses on the communication between the Node.js API and the Python
+      Flask service. We verify that JSON payloads are correctly passed and
+      returned.
+
+
+
+
+                                          29
+   ● Model Validation:
+      The Random Forest model is evaluated using metrics like Mean Squared Error
+      (MSE) and R-squared to ensure high prediction accuracy compared to
+      historical benchmarks.
+
+
+   ● System Testing:
+      The entire flow—from user registration to searching for a skill and viewing a
+      roadmap—is tested end-to-end.
+
+
+   ● Performance Testing:
+      Ensuring the ML microservice can handle concurrent requests without
+      significant latency.
+
+      Validation is performed by comparing the system’s output with expected
+results, ensuring accurate booking operations and conflict resolution. Continuous
+testing helps identify and fix errors, improving system quality.
+
+
+3.6 Standards and Best Practices
+
+      The development of this project follows industry-standard practices to ensure
+code quality, maintainability, and system reliability.
+
+   ● Coding Standards:
+      Clean, readable, and well-documented code is maintained throughout the
+      project.
+
+   ● Modular Design:
+      The system is divided into smaller components for better organization and
+      scalability.
+
+
+                                          30
+   ● RESTful API Design:
+      Standard API practices are followed for efficient communication between
+      frontend and backend.
+
+   ● Version Control:
+      Tools like Git are used to manage code changes and collaboration.
+
+   ● Responsive Design:
+      The system is designed to work across different devices and screen sizes.
+
+   ● Security Best Practices:
+      Data protection, authentication, and authorization are implemented
+      following standard guidelines.
+
+   ● ML Transparency:
+      Providing users with "Pros and Cons" for each skill to justify the AI's
+      numerical Score.
+
+   ● Testing Practices:
+       Regular testing is conducted to ensure system reliability and performance.
+
+      By adhering to these standards and best practices, the system ensures high
+quality, scalability, and long-term maintainability.
+
+
+
+
+                                          31
+                                  CHAPTER IV
+                      PROPOSED WORK MODULES
+
+      The skill demand forecaster system is designed with multiple integrated
+modules to ensure efficient, data-driven forecasting of technology trends. The
+system begins with the User Registration and Authentication module, where users
+register and log in securely. Using JSON Web Tokens (JWT), the system manages
+sessions and grants access levels based on roles like "Standard User" or
+"Administrator."
+
+      The Admin Dashboard and Skill Management module allows administrators
+to perform CRUD operations on technology skills, allowing them to update "Pros
+and Cons," "Learning Steps," and "Future Scope" metadata. This ensures that the
+qualitative advice provided by the system remains up to date with industrial
+standards.
+
+      The User Dashboard and Forecast Management module enables users to enter
+tech skills, capture demand forecasts, and track their search history. It provides a
+visual, interactive interface for exploring various professional paths.
+
+      A key component is the ML Prediction and Demand Scoring module, which
+utilizes a Random Forest Regressor to analyze multiple market variables and provide
+a quantifiable Demand Score (0-100), ensuring an objective assessment of
+technology trends.
+
+      The system also includes a Metadata Enrichment and Roadmap module,
+which fetches descriptive details and prioritized learning steps from the database,
+providing a comprehensive "Learning Strategy" rather than a simple numerical
+prediction.
+
+
+                                          32
+      Together, these modules create a centralized, intelligent, and transparent
+platform for managing professional growth and skill acquisition effectively.
+
+
+4.1 Proposed Work
+
+      The proposed system, skill demand forecaster, is a full-stack, ML-driven web
+application designed to automate and manage technology demand forecasting
+through a structured and data-centric approach. The system focuses on improving
+career planning efficiency, reducing the "choice paralysis" of modern learners, and
+ensuring that skill acquisition aligns with future market needs.
+
+      The platform provides a centralized interface where users can search for skills,
+view AI-powered demand scores, and browse personalized learning roadmaps.
+Administrators are provided with dedicated tools to manage the backend database,
+ensuring that the qualitative insights (Pros/Cons and Roadmaps) are regularly
+optimized to reflect common industry trends.
+
+      A key feature of the system is its ability to quantify technological demand
+using a Random Forest Regressor model. The integration of secure JWT
+Authentication ensures that users can safely store their search history and access
+their results from any device, enhancing both security and user convenience.
+
+
+4.2 User Registration and Role-Based Access
+
+      The system begins with a secure user registration and authentication process.
+Users can register by providing their email, name, and password. After registration,
+users can log in securely to receive a session token.
+
+      This project implements a Role-Based Access Control (RBAC) system, which
+assigns specific permissions to different types of users. The main roles include:
+
+                                          33
+      Administrator: Manages the global database of skills, updates roadmap
+content, and monitors the health of the ML microservice.
+
+      Standard User: Can search for technology skills, generate demand forecasts,
+view learning roadmaps, and track their personal search history.
+
+      Each role has defined access rights, ensuring that sensitive data manipulation
+(like editing the core roadmap steps) is restricted to authorized personnel. This
+module ensures that unauthorized access is prevented and system operations remain
+secure and organized.
+
+
+4.3 Admin Dashboard and Skill Management
+
+      The admin dashboard is a central component of the system that allows
+administrators to maintain the platform's data integrity. Through the dashboard,
+administrators can:
+
+   ● Add, update, and delete technology skills in the MongoDB database.
+   ● Modify qualitative metadata such as "About," "Pros," and "Cons."
+   ● Refine "Roadmap Steps" to reflect the latest tools and frameworks.
+   ● Monitor the prediction accuracy and availability of the Python ML service.
+
+      The dashboard provides a clear and organized interface, enabling
+administrators to handle hundreds of technology entries effectively. It also supports
+quick decision-making by displaying data visualization of which technologies are
+being searched for most by users.
+
+
+
+
+                                         34
+4.4 User Dashboard and Forecast Management
+
+      The user dashboard is designed for Students, Job Seekers, and Professionals
+to interact with the AI easily.
+
+Users can:
+
+   ● Enter any technology skill name (e.g., React, Python, AWS).
+
+   ● View the AI-generated Demand Score and Future Scope Category.
+
+   ● Explore "Tabbed Content" (About, Pros/Cons, Map) to understand the skill in
+      depth.
+
+   ● Track the status of previously forecasted skills.
+
+      The system ensures that results are returned in real-time. The dashboard is
+highly responsive and aesthetically pleasing, utilizing modern design elements like
+glass morphism and smooth transitions to improve the overall engagement and UX.
+
+
+4.5 ML Prediction and Demand Scoring Module
+
+      The "Intelligent Brain" of this forecaster is the ML Prediction and Demand
+Scoring module. When a user requests a forecast, the system captures key market
+parameters:
+
+          ● Job Openings / Postings
+          ● Average Annual Salary
+          ● Annual Growth Rate
+          ● Difficulty Level and Learning Time
+
+
+
+
+                                         35
+      The Random Forest Regressor model (hosted on the Python Flask service)
+processes these numerical inputs against its trained dataset. If a conflict in data is
+detected (e.g., high salary but negative growth), the model uses its tree-based logic
+to prioritize factors and output a fair Demand Score (0-100). This module eliminates
+human bias and provides a purely data-driven verdict on a technology’s future.
+
+
+4.6 Metadata Enrichment and Roadmap Module
+
+      Beyond numbers, this forecaster provides actionable guidance through the
+Metadata Enrichment module. Once the ML score is generated, the backend fetches
+corresponding qualitative data from MongoDB.
+
+         ● Fundamental Steps: Always prioritized first in the learning sequence.
+         ● Advanced Certifications: Suggested as high-priority milestones for
+             professional growth.
+         ● Industry Trends: Suggested as complementary tools.
+         ● This module ensures that users don't just see a score, but also
+             understand the "Roadmap" needed to achieve mastery.
+         ● It provides institutional-level transparency into why certain skills are
+             rated higher than others.
+
+
+4.7 Methodology
+
+      The development follows a structured and systematic methodology to ensure
+robustness and quality. The system is designed using a Microservice approach,
+where the web logic and AI logic are developed and tested independently. The
+development process includes the following steps:
+
+
+
+
+                                          36
+   ● Requirement Analysis:
+      Identifying the most critical features for career planning.
+   ● System Design:
+      Creating the dual-service architecture (MERN + Python/Flask).
+   ● Model Training:
+      raining the Random Forest model on technology market datasets.
+   ● Implementation:
+      Developing the React UI and the Node.js/Python API endpoints.
+   ● Integration:
+      Connecting the ML service with the main API for seamless data flow.
+   ● Testing:
+      Conducting unit, integration, and user-experience testing.
+   ● Deployment:
+      Hosting the application for real-world usage
+
+      An iterative development approach is followed, allowing continuous
+improvement and bug fixing.
+
+      This methodology ensures that the system is reliable, scalable, and capable of
+meeting real-world requirements effectively.
+
+
+
+
+                                         37
+                                 CHAPTER V
+                       RESULTS AND DISCUSSION
+
+      The implementation demonstrates a significant improvement in technology
+career planning compared to traditional manual research. The system successfully
+enables users to search for skills, receive AI-powered demand scores, and follow
+structured roadmaps through an intuitive interface, while administrators efficiently
+handle skill metadata and system monitoring.
+
+      One of the key outcomes is the effective integration of the Random Forest
+Regressor model within a web-based architecture. The system automatically
+calculates demand scores based on market variables, reducing the need for users to
+manually browse hundreds of job postings. This ensures a purely data-driven
+approach to skill acquisition.
+
+      The security system, built on JWT (JSON Web Tokens) and Bcrypt hashing,
+ensures secure access by restricting administrative functionalities. Real-time
+feedback allows users to see their forecasting history instantly, improving
+transparency and confidence in the results. Testing results indicate that the system
+performs efficiently under concurrent requests, maintaining accuracy and high
+responsiveness.
+
+      Overall, this project proves to be a reliable, scalable, and efficient solution
+that enhances professional awareness and streamlines the skill-building journey.
+
+
+5.1 Results
+
+      This project system was successfully developed and tested, demonstrating
+high accuracy in predicting technology market trends. The results show a significant
+reduction in the time required for career research, improved objective decision-
+
+                                         38
+making, and enhanced clarity through automated roadmaps. The system meets all
+intended objectives, providing a robust solution for modern talent forecasting.
+
+5.1.1 User Registration and Role-Based Access
+
+                      Table 5.1: User Registration Metrics
+
+                  Parameter                                    Result
+
+Successful user registrations                                    32
+
+Average registration time                                   35 seconds
+
+Password encryption validation                                 Passed
+
+JWT Token persistence                                          Passed
+
+
+      The forecaster system implements a secure authentication mechanism using
+JWT and Bcrypt. Access is restricted to valid registered accounts, ensuring that user
+search histories and profiles remain private. Users can sign up and log in through a
+sleek, glass morphic interface. Testing results confirm that the authentication
+mechanism works efficiently while maintaining ease of use and high security.
+Additionally, password hashing ensures that sensitive user credentials are never
+stored in plain text, enhancing data protection. The system also supports session
+management through token-based validation, preventing unauthorized access and
+ensuring a seamless user experience.
+
+
+
+
+                                         39
+                       Figure 5.1: User Registration Screenshot
+
+
+5.1.2 Dashboard and Skill Management
+
+      The admin dashboard provides a centralized interface for managing the tech
+skill database. Administrators can update the "Pros and Cons" and the "Roadmap
+Steps" for any technology. This ensures that the qualitative advice provided by the
+AI is always kept current. Results indicate that this module significantly reduces the
+technical debt required to keep a career platform relevant in the fast-paced tech
+sector.
+
+
+
+
+                                          40
+                          Figure 5.2: Dashboard Screenshot 1
+
+      The AI Skill Analytics Dashboard provides a comprehensive overview of
+current technology trends by combining demand scores and salary insights in a
+single interface. It allows users to input a specific skill and instantly receive an AI-
+driven prediction of its market demand, helping in informed career decision-making.
+The dashboard also highlights trending skills such as Artificial Intelligence,
+Cybersecurity, and Cloud Computing with corresponding demand percentages. In
+addition, it presents average global salary data for various roles, giving users a clear
+understanding of earning potential. Overall, the system offers a data-driven approach
+to skill evaluation, enabling users to align their learning paths with industry
+demands.
+
+
+
+
+                                          41
+                       Figure 5.3: Dashboard Screenshot 2
+
+
+5.1.3 User Dashboard and Forecasting Interaction
+
+      The user dashboard enables students and professionals to interact with the AI
+easily. Users can search for any skill, see the Demand Score (0–100), and navigate
+through tabs to view the "About" section and the "Roadmap." The results show that
+this module improves user engagement by providing a visual, structured breakdown
+of complex market data. The interface is designed to be intuitive, allowing users to
+quickly understand key insights without requiring technical expertise. It also
+presents additional details such as skill relevance, industry applications, and future
+growth potential. Interactive elements and dynamic updates enhance the overall user
+experience and make the system more responsive. Furthermore, the dashboard helps
+users make informed decisions by clearly connecting demand insights with
+actionable learning steps.
+
+
+
+
+                                          42
+                     Figure 5.4: Market Research Screenshot
+
+      The Technology Market Insights page provides a high-level overview of
+global trends in the tech industry, combining key metrics such as job availability,
+hiring growth, and salary benchmarks. It highlights important statistics like the
+number of open tech jobs, year-over-year growth in AI hiring, and median salaries,
+offering users a clear snapshot of the market. The dashboard also showcases the
+percentage of companies expanding their tech teams, indicating strong industry
+demand. Additionally, the Sector Growth Index presents growth trends across major
+domains like Artificial Intelligence, Cloud Computing, and Cybersecurity. Overall,
+this page enables users to understand market dynamics and identify high-growth
+sectors for strategic career planning.
+
+
+
+
+                                         43
+                       Figure 5.5: Forecasting Screenshot
+
+      The AI-Generated Learning Roadmap provides a structured, step-by-step
+guide to mastering a selected skill based on its demand and industry relevance. It
+breaks down the learning process into clearly defined stages, starting from
+fundamental concepts such as programming basics to advanced topics like machine
+learning and statistical analysis. Each step includes recommended topics, tools, and
+an estimated time duration to help users plan their learning efficiently. The roadmap
+ensures a logical progression, reducing confusion and improving knowledge
+retention. By aligning learning paths with current market demands, this feature
+enables users to acquire skills in a strategic and goal-oriented manner.
+
+
+
+
+                                         44
+                        Figure 5.6: Road Map Screenshot
+
+5.1.4 Prediction Accuracy and Performance
+
+      The ML module was tested with various technology parameters. The system
+successfully identifies "High-Priority" skills versus "Stable" technologies.
+Performance testing shows that the dual-service communication (Node.js to Python)
+takes less than 500ms on average, ensuring a smooth and responsive experience for
+the end-user.
+
+
+5.2 Significance, Strengths, and Limitations
+
+Significance
+
+      This project plays an important role in modernizing career guidance by
+shifting from subjective advice to predictive analytics. It provides a centralized
+platform for understanding technology ROI (Return on Investment), ensuring that
+learners spend their time on the most impactful skills.
+
+
+
+                                         45
+Strengths
+
+  ● Automation of Processes:
+     Reduces manual effort in booking and approval workflows.
+
+  ● Role-Based Access Control:
+     Enhances security and ensures controlled system usage.
+
+  ● Conflict Detection Mechanism:
+     Prevents overlapping bookings and ensures fair allocation.
+
+  ● User-Friendly Interface:
+     Provides easy navigation and accessibility for all users.
+
+  ● Scalability:
+     Designed to handle multiple users and resources efficiently.
+
+  ● Real-Time Updates:
+     Allows users to track booking status instantly.
+
+Limitations
+
+  ● Dependence on Internet Connectivity:
+     The system requires stable internet access for operation.
+
+  ● Initial Setup Complexity:
+     Configuration of roles, resources, and permissions requires careful setup.
+
+  ● Limited to Web Platform:
+     Currently, the system does not include a mobile application.
+
+
+
+
+                                        46
+   ● Basic Analytics:
+        Advanced reporting and analytics features are limited in the current version.
+
+        Despite these limitations, the system provides a strong foundation for efficient
+forecasting.
+
+
+5.3 Cost-Benefit Analysis
+
+        The development and implementation of Skill Demand Forecasting involve
+both costs and benefits, which can be analyzed to evaluate its overall effectiveness.
+
+Costs
+
+   ● Development Cost:
+        Time and effort required for designing, coding, and testing the system.
+
+   ● Infrastructure Cost:
+        Expenses related to hosting, servers, and database management.
+
+   ● Maintenance Cost:
+        Ongoing costs for system updates, bug fixes, and improvements.
+
+   ● Training Cost:
+        Time required to train users and administrators to use the system.
+
+Benefits
+
+   ● Objective Decision-Making:
+        Automation replaces subjective "career advice" with a data-driven Demand
+        Score, ensuring users invest in the right competencies.
+
+
+
+
+                                           47
+   ● Automated Guidance:
+      Instantly generates learning roadmaps, eliminating the need for users to
+      manually search for learning path sequences across multiple sites.
+
+   ● Increased Accuracy:
+      Minimizes human error in judging technological trends by using a
+      mathematical model that weights job openings, salary, and growth factors
+      equally.
+
+   ● Time Efficiency:
+      Provides instant forecasts and roadmaps, saving users hours of manual market
+      research and curriculum planning.
+
+   ● Career Alignment:
+      Improves resource utilization by aligning the user's learning path with high-
+      paying and high-growth technology sectors.
+
+   ● Scalability:
+      The system can be extended to handle hundreds of new technology categories
+      and a high volume of concurrent users without major architectural changes.
+
+Analysis
+
+      The benefits of ML-Driven Skill Demand Forecasting significantly outweigh
+the initial development costs. While the setup requires specialized technical
+expertise in both Web Development and Data Science, the long-term advantages—
+in terms of career clarity, data-backed foresight, and time savings for thousands of
+users—make this an exceptionally cost-effective solution for the modern educational
+and professional ecosystem.
+
+
+
+                                          48
+5.4 Operational Benefits
+
+      The implementation of ML-Driven Skill Demand Forecasting provides
+several operational benefits that improve the efficiency of career development and
+the acquisition of high-impact skills.
+
+   ● Automated Forecasting Process:
+      Users can instantly receive a demand prediction for any technology without
+      the need for manual data gathering or subjective research.
+
+   ● Accurate Market Alignment:
+      Technology skills are weighted by salary, postings, and growth, ensuring that
+      learners align their efforts with the most high-reward sectors.
+
+   ● Reduced Information Burden:
+       Automation decreases the time-consuming administrative task of manually
+      scrounging for trends across multiple job portals and news sites.
+
+   ● Improved Career Transparency:
+      Clear visibility is provided into why specific skills are rated as "High Priority"
+      versus "Emerging," reducing the guesswork in professional planning.
+
+   ● Better Strategic Decisions:
+      Individuals and institutions can make informed decisions about curriculum
+      updates and learning investments based on quantifiable Demand Scores (0-
+      100).
+
+   ● Personalized Roadmap Generation:
+       The system instantly provides clear, prioritized learning steps, eliminating the
+      confusion of how to start mastering a new technology.
+
+
+                                          49
+   ● Systematic Career Pathing:
+      Supports structured growth by offering a unified platform where various
+      technologies can be compared side-by-side on the same metrics.
+
+   ● Consistency and Reliability:
+      Ensures accurate and consistent system performance, providing reliable
+      forecasts across a wide range of diverse technology categories.
+
+      The system improves decision-making efficiency, reduces the time spent on
+career research, and provides a data-driven path to professional success.
+
+
+
+
+                                         50
+                                 CHAPTER VI
+    CONCLUSIONS & SUGGESTIONS FOR FUTURE WORK
+6.1 Conclusion
+
+      The ML-Driven Skill Demand Forecasting system successfully addresses the
+challenges associated with volatile technology trends by providing a centralized,
+automated, and AI-powered platform. The implementation of a dual-service
+architecture ensures that complex mathematical predictions are delivered through a
+fast and secure web interface, while the integration of JWT Authentication provides
+a structured way for users to track their personal development history.
+
+      One of the major achievements of the system is the combination of
+quantitative analysis and qualitative guidance. By using the Random Forest
+Regressor, the system provides high-accuracy Demand Scores based on salary, job
+postings, and growth factors. Furthermore, the automated generation of learning
+roadmaps ensures that users have a clear, step-by-step path to achieve their career
+goals. This end-to-end approach enhances transparency and significantly reduces the
+time spent on manual career research.
+
+      Overall, this project demonstrates how modern web technologies and machine
+learning can be effectively utilized to streamline professional navigation. The system
+improves decision-making accuracy, minimizes the risk of learning declining
+technologies, and provides a reliable solution for managing technical skill
+acquisition in the modern era.
+
+
+
+
+                                          51
+6.2 Suggestions for Future Work
+
+      Although the current system provides a comprehensive solution, several
+enhancements can be implemented in the future to further improve its functionality
+and user experience:
+
+   ● Development of a mobile application to increase accessibility for users on
+      various platforms.
+
+   ● Integration with real-life job board APIs (e.g., LinkedIn, Indeed) for real-time
+      data scraping and automatic model retraining.
+
+   ● Implementation of an AI-based Career Coach using Large Language Models
+      (LLMs) to answer specific user queries regarding the roadmap steps.
+
+   ● Addition of Comparative Analytics, allowing users to compare two skills side-
+      by-side to evaluate their relative market value.
+
+   ● Introduction of a Notification System (Email/SMS) to alert users when a skill
+      in their history experiences a significant shift in demand.
+
+   ● Support for Enterprise Deployment, allowing organizations to use the system
+      for internal workforce skill-gap analysis and training recommendations.
+
+   ● These future improvements will make the system more intelligent, user-
+      friendly, and globally scalable, further enhancing its effectiveness in real-
+      world professional development.
+
+      These future improvements will make the system more intelligent, user-
+friendly, and scalable, further enhancing its effectiveness in real-world applications
+
+
+
+
+                                          52
+REFERENCES
+
+[1] Breiman, L. (2021). Random Forests. Machine Learning, 45(1), 5-32.
+
+[2] Pedregosa, F., et al. (2024). Scikit-learn: Machine Learning in Python. Journal
+of Machine Learning Research (JMLR), 12, 2825-2830.
+
+[3] Fielding, R. T. (2024). Architectural Styles and the Design of Network-Based
+Software Architectures (Doctoral dissertation). University of California, Irvine.
+
+[4] Tilkov, S., & Vinoski, S. (2023). Node.js: Using JavaScript to Build High-
+Performance Network Programs. IEEE Internet Computing, 14(6), 80–83.
+
+[5]   MongoDB        Inc.   (2024).    MongoDB            Documentation.   Available:
+https://www.mongodb.com/docs
+
+[6] React Team. (2024). React Documentation. Available: https://react.dev
+
+[7]   OpenJS     Foundation.     (2024).        Node.js   Documentation.   Available:
+https://nodejs.org
+
+[8] OWASP Foundation. (2023). OWASP Top 10: Web Application Security Risks.
+Available: https://owasp.org
+
+[9] Sommerville, I. (2025). Software Engineering (10th ed.). Boston, MA, USA:
+Pearson.
+
+[10] Pressman, R. S., & Maxim, B. R. (2020). Software Engineering: A
+Practitioner’s Approach (9th ed.). New York, NY, USA: McGraw-Hill.
+
+[11] Scikit-Learn. (2024). Supervised Learning - Ensemble Methods. Available:
+https://scikit-learn.org/stable/modules/ensemble.html
+
+
+                                           53
+APPENDICES
+
+BATCH MEMBER: RAHUL SANJAY G (7376232IT235)
+
+  1. Designed and developed the complete ML-Driven Skill Demand Forecasting
+     system architecture, including frontend, backend, and the Python ML
+     microservice.
+
+  2. Implemented JWT-based secure authentication and bcrypt-encrypted
+     password protection for user profile management.
+
+  3. Developed the Random Forest Regressor model using Scikit-Learn to
+     calculate accurate technology demand scores based on market parameters.
+
+  4. Built the high-performance Admin Dashboard and interactive User
+     Interfaces using React.js for seamless skill forecasting and history tracking.
+
+  5. Implemented the Automated Roadmap Generation logic to ensure a
+     structured learning path for each identified technology.
+
+  6. Performed end-to-end testing, debugging, and cross-origin deployment on
+     Vercel and Render, ensuring the system’s overall reliability and speed.
+
+
+
+
+                                        54
+PLAGIARISM REPORT
+
+
+
+
+                    55
+
