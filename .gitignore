@@ -4,3 +4,9 @@ debug_key
 debug_key.pub
 .next/
 *.log
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
